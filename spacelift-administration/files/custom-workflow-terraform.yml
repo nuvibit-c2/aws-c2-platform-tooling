@@ -1,0 +1,46 @@
+# Used to initialize your root module.
+init: terraform init -input=false
+
+# Used to select the correct workspace. Only used for Stacks that are using a custom state
+# backend, and which have the Workspace setting configured.
+#
+# Available template parameters:
+# - .WorkspaceName - contains the name of the workspace to select.
+workspaceSelect: terraform workspace select "{{ .WorkspaceName }}"
+
+# Used to create a new workspace if none with the required name exists. Only used for Stacks
+# that are using a custom state backend, and which have the Workspace setting configured.
+#
+# Available template parameters:
+# - .WorkspaceName - contains the name of the workspace to select.
+workspaceNew: terraform workspace new "{{ .WorkspaceName }}"
+
+# Used to generate a plan of the infrastructure changes that will be applied.
+#
+# Available template parameters:
+# - .Lock         - whether the state should be locked.
+# - .Refresh      - whether state resources should be refreshed.
+# - .PlanFileName - the name of the file to store the plan in.
+# - .Targets      - the list of targets to plan. Used during targeted replans.
+plan: terraform plan -input=false -lock={{ .Lock }} {{ if not .Refresh }}-refresh=false {{ end }}-out={{ .PlanFileName }} {{ range .Targets }}-target='{{ . }}' {{ end }}
+
+# Outputs the current state information as JSON.
+showState: terraform show -json
+
+# Used to convert a plan file to its JSON representation.
+#
+# Available template parameters:
+# - .PlanFileName - the name of the file containing the plan.
+showPlan: terraform show -json "{{ .PlanFileName }}"
+
+# Used to get the current outputs from the state.
+getOutputs: terraform output -json
+
+# Used to apply any changes contained in the specified plan.
+#
+# Available template parameters:
+# - .PlanFileName - the name of the file containing the plan.
+apply: terraform apply -auto-approve -input=false "{{ .PlanFileName }}"
+
+# Used to tear down any resources as part of deleting a stack.
+destroy: terraform destroy -auto-approve -input=false
