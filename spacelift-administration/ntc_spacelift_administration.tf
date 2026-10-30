@@ -199,7 +199,7 @@ module "ntc_spacelift_administration" {
         # https://docs.spacelift.io/concepts/spaces/moving-a-space-or-an-entity#moving-a-stack
         integration = "spacelift-administration"
         # github organization, gitlab namespace or bitbucket project containing the repository
-        namespace  = "mycompany"
+        namespace = "mycompany"
         # NOTE: reference an existing github repo by name or add a direct reference to the github repository resource
         repository = "terraform-opentofu-test"
         branch     = "main"
