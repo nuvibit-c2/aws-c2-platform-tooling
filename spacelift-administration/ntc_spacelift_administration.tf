@@ -8,7 +8,7 @@
 # 4) create a spacelift-administration repository and a spacelift administration-stack: https://docs.spacelift.io/concepts/stack/stack-settings#administrative
 # 5) (optional) add NTC modules to spacelift private registry or add NTC credentials as environment variables to spacelift administration-stack
 module "ntc_spacelift_administration" {
-  source = "https://github.com/nuvibit-terraform-collection/terraform-spacelift-ntc-administration?ref=1.1.0"
+  source = "https://github.com/nuvibit-terraform-collection/terraform-spacelift-ntc-administration?ref=1.5.0"
 
   # (optional) settings for auditing all operations that change Spacelift resources
   # Audit Trail is an Enterprise plan feature
