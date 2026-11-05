@@ -8,7 +8,7 @@
 # 4) create a spacelift-administration repository and a spacelift administration-stack: https://docs.spacelift.io/concepts/stack/stack-settings#administrative
 # 5) (optional) add NTC modules to spacelift private registry or add NTC credentials as environment variables to spacelift administration-stack
 module "ntc_spacelift_administration" {
-  source = "https://github.com/nuvibit-terraform-collection/terraform-spacelift-ntc-administration?ref=1.1.0"
+  source = "github.com/nuvibit-terraform-collection/terraform-spacelift-ntc-administration?ref=1.5.0"
 
   # (optional) settings for auditing all operations that change Spacelift resources
   # Audit Trail is an Enterprise plan feature
@@ -199,7 +199,7 @@ module "ntc_spacelift_administration" {
         # https://docs.spacelift.io/concepts/spaces/moving-a-space-or-an-entity#moving-a-stack
         integration = "spacelift-administration"
         # github organization, gitlab namespace or bitbucket project containing the repository
-        namespace  = "mycompany"
+        namespace = "mycompany"
         # NOTE: reference an existing github repo by name or add a direct reference to the github repository resource
         repository = "terraform-opentofu-test"
         branch     = "main"
