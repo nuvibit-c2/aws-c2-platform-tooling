@@ -2,7 +2,7 @@
 # ¦ NTC GITHUB ADMINISTRATION
 # ---------------------------------------------------------------------------------------------------------------------
 module "ntc_github_administration" {
-  source = "https://github.com/nuvibit-terraform-collection/terraform-github-ntc-administration?ref=1.0.0"
+  source = "github.com/nuvibit-terraform-collection/terraform-github-ntc-administration?ref=1.4.3"
 
   organization_settings = {
     # set 'update_settings' to false to omit this block
@@ -202,7 +202,7 @@ module "ntc_github_administration" {
 
 # create template repositories separately to avoid a circular dependency
 module "ntc_github_template_repos" {
-  source = "https://github.com/nuvibit-terraform-collection/terraform-github-ntc-administration?ref=X.X.X"
+  source = "github.com/nuvibit-terraform-collection/terraform-github-ntc-administration?ref=1.4.3"
 
   organization_repositories = [
     {
